@@ -546,7 +546,7 @@ class Probe:
     #
     def window_add_decorations(self, win):
         # Doesn't seem to be working...
-        #win.change_property(self.atom("_MOTIF_WM_HINTS"), self.atom("_MOTIF_WM_HINTS"), 32, [0x2, 0, 1, 0, 0])
+        win.change_property(self.atom("_MOTIF_WM_HINTS"), self.atom("_MOTIF_WM_HINTS"), 32, [0x2, 0, 1, 0, 0])
         self._send_event(win, self.atom("_NET_WM_STATE"), [0, self.atom("_OB_WM_STATE_UNDECORATED")])
         self.get_display().flush()
 
@@ -592,7 +592,7 @@ class Probe:
     #
     def window_remove_decorations(self, win):
         # Doesn't seem to be working...
-        #win.change_property(self.atom("_MOTIF_WM_HINTS"), self.atom("_MOTIF_WM_HINTS"), 32, [0x2, 0, 0, 0, 0])
+        win.change_property(self.atom("_MOTIF_WM_HINTS"), self.atom("_MOTIF_WM_HINTS"), 32, [0x2, 0, 0, 0, 0])
         self._send_event(win, self.atom("_NET_WM_STATE"), [1, self.atom("_OB_WM_STATE_UNDECORATED")])
         self.get_display().flush()
 

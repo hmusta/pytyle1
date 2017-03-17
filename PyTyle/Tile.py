@@ -146,13 +146,31 @@ class Tile:
     def _untile(self):
         # just resize all the windows back to their original x/y/width/height
         for window in self.storage.get_all():
-            if Config.misc('original_decor'):
-                window.add_decorations()
-            else:
-                window.remove_decorations()
+            window.add_decorations()
+#            if Config.misc('original_decor'):
+#                window.add_decorations()
+#            else:
+#                window.remove_decorations()
 
             window.resize(window.origx, window.origy, window.origwidth, window.origheight)
 
+    def _add_decorations(self):
+        for window in self.storage.get_all():
+            window.add_decorations()
+
+
+    def _remove_decorations(self):
+        for window in self.storage.get_all():
+            window.remove_decorations()
+
+    def _toggle_decorations(self):
+        for window in self.storage.get_all():
+            if window.decorated:
+                Config.MISC['decorations'] = False
+                window.remove_decorations()
+            else:
+                Config.MISC['decorations'] = True
+                window.add_decorations()
     #
     # Tells PyTyle to reload the configuration file.
     #
@@ -532,6 +550,15 @@ class Tile:
     def untile(self):
         self._untile()
         self.screen.disable_tiling()
+
+    def add_decorations(self):
+        self._add_decorations()
+
+    def remove_decorations(self):
+        self._remove_decorations()
+
+    def toggle_decorations(self):
+        self._toggle_decorations()
 
     def cycle_tiler(self):
         for i in range(len(Config.misc('tilers'))):

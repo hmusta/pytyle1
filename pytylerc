@@ -203,6 +203,8 @@ Config.KEYMAP = {
                  'Alt-Shift-J': 'switch_previous',
                  'Alt-Shift-K': 'switch_next',
 
+                 'Alt-Shift-D': 'toggle_decorations',
+
                  # This is a debugging binding that shows some information
                  # about the current desktop. It's only useful if you're
                  # running PyTyle from a terminal.

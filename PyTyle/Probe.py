@@ -545,6 +545,7 @@ class Probe:
     # Props to devilspie for this one.
     #
     def window_add_decorations(self, win):
+        print "Adding back decorations"
         # Doesn't seem to be working...
         win.change_property(self.atom("_MOTIF_WM_HINTS"), self.atom("_MOTIF_WM_HINTS"), 32, [0x2, 0, 1, 0, 0])
         self._send_event(win, self.atom("_NET_WM_STATE"), [0, self.atom("_OB_WM_STATE_UNDECORATED")])

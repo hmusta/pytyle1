@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 #===============================================================================
 # PyTyle - A manual tiling manager
 # Copyright (C) 2009  Andrew Gallant <andrew@pytyle.com>
@@ -283,6 +283,15 @@ try:
             except:
                 DEBUG.write("Could not properly handle screen change")
                 DEBUG.write(traceback.format_exc())
+#TODO: for now, this doesn't untile, so you have to do it manually
+#except KeyboardInterrupt:
+    DEBUG.write("Caught keyboard interrupt, untiling")
+#    for desktop in State.get_desktops().values():
+#        for viewport in desktop.viewports.values():
+#           for screen in viewport.screens.values():
+#                Tile.dispatch(screen.get_tiler(), 'add_decorations')
+#        time.sleep(Config.misc('timeout'))
+#    sys.exit(0)
 except:
     DEBUG.write("Fatal error")
     DEBUG.write(traceback.format_exc())

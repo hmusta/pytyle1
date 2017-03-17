@@ -107,6 +107,7 @@ class Window:
         self.origwidth = self.width
         self.origheight = self.height
         self.screen = screen
+        self.decorated = True
 
         if self.xobj:
             PROBE.window_listen(self.xobj)
@@ -130,6 +131,7 @@ class Window:
     def add_decorations(self):
         PROBE.window_add_decorations(self.xobj)
         self.static = True
+        self.decorated = True
 
     #
     # Closes the current window. There are some problems with this right
@@ -234,6 +236,7 @@ class Window:
                 if viewport.is_on_viewport(update['x'], update['y']):
                     for screen in viewport.screens.values():
                         if screen.is_on_screen(update['x'], update['y']):
+                            self.add_decorations()
                             oldscreen.delete_window(self)
                             screen.add_window(self)
                             screen.needs_tiling()
@@ -268,6 +271,7 @@ class Window:
     def remove_decorations(self):
         PROBE.window_remove_decorations(self.xobj)
         self.static = False
+        self.decorated = False
 
     #
     # Yet another weird thing to handle. Sometimes windows will set their
